@@ -1,0 +1,12 @@
+[flake8]
+; Make flake8 compatible with black tool behaviour.
+ignore = E203, E266, E501, W503, F403, F401
+select = B,C,E,F,W,T4,B9
+max-line-length = 100
+
+; As stated by McCabe, anything above 10 is too complex.
+max-complexity = 10
+
+; Allow long lines in tests.
+extend-ignore = E501
+exclude = tests/

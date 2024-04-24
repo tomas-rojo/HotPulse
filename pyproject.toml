@@ -1,0 +1,42 @@
+[tool.black]
+target-version = ['py311']
+line-length = 100
+
+[tool.pytest.ini_options]
+testpaths = [ "tests/" ]
+pythonpath = "src/"
+addopts = "--tb=short -q"
+
+[tool.isort]
+profile = "black"
+src_paths = ["src/", "tests/"]
+line_length = 100
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+check_untyped_defs = true
+warn_unused_configs = true
+ignore_missing_imports = true
+warn_unused_ignores = false
+
+[tool.pydeps]
+reverse = true
+rankdir = "BT"
+
+[tool.coverage.run]
+relative_files = true
+source = [ "src/" ]
+omit = [
+    "src/app_version.py",
+    "src/cli_app/*",
+]
+branch = true
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "@(abc\\.)?abstractmethod",
+    "@unittest\\.skip",
+    "raise NotImplementedError",
+]
