@@ -6,6 +6,7 @@ from models.task import Task
 
 class AbstractTasksQueueRepository(ABC):
     """The component responsible for storing and retrieving tasks from the queue"""
+
     @abstractmethod
     def enqueue(self, queue_id: str, task: Task) -> None:
         raise NotImplementedError

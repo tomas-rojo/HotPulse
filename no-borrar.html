@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row d-flex justify-content-center align-items-center vh-100">
+        <div class="col-lg-6 col-12">
+            <form class="p-5 m-2 rounded shadow bg-light" action="{{ url_for('api.api') }}" method="post">
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input type="text" class="form-control" id="description" name="description" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="priority" class="form-label">Priority</label>
+                    <select class="form-select" name="priority" id="priority">
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
+                    </select>
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary btn-lg my-3" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

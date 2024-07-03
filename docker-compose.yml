@@ -1,0 +1,12 @@
+services:
+    rabbitmq:
+        container_name: rabbitmq
+        image: rabbitmq:management
+        healthcheck:
+            test: rabbitmq-diagnostics status
+            interval: 4s
+            timeout: 4s
+            retries: 10
+        ports:
+            - 5672:5672
+            - 15672:15672
