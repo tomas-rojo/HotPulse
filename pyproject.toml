@@ -4,12 +4,12 @@ line-length = 100
 
 [tool.pytest.ini_options]
 testpaths = [ "tests/" ]
-pythonpath = "src/"
+pythonpath = "hotpulse/"
 addopts = "--tb=short -q"
 
 [tool.isort]
 profile = "black"
-src_paths = ["src/", "tests/"]
+src_paths = ["hotpulse/", "tests/"]
 line_length = 100
 
 [tool.mypy]
@@ -26,10 +26,10 @@ rankdir = "BT"
 
 [tool.coverage.run]
 relative_files = true
-source = [ "src/" ]
+source = [ "hotpulse/" ]
 omit = [
-    "src/app_version.py",
-    "src/cli_app/*",
+    "hotpulse/app_version.py",
+    "hotpulse/cli_app/*",
 ]
 branch = true
 

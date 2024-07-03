@@ -1,7 +1,7 @@
+import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
-import uuid
 
 
 class Priority(Enum):

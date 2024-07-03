@@ -1,4 +1,5 @@
 from collections import OrderedDict
+
 from config.dependency import Dependency
 from models.task import Task
 from ports.abstract_tasks_queue_repository import AbstractTasksQueueRepository

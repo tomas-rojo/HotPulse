@@ -14,7 +14,9 @@ def test_tasks_queue_repository_can_enqueue_multiple_tasks_in_sequential_order(
     queue_repository: AbstractTasksQueueRepository,
 ) -> None:
     task_1 = Task(id="1", description="Do the laundry", priority=Priority.LOW, status=Status.TODO)
-    task_2 = Task(id="2", description="Get new TV batteries", priority=Priority.MEDIUM, status=Status.TODO)
+    task_2 = Task(
+        id="2", description="Get new TV batteries", priority=Priority.MEDIUM, status=Status.TODO
+    )
     task_3 = Task(id="3", description="Fix curtains", priority=Priority.HIGH, status=Status.TODO)
     queue_id_1 = str(QueueId(task=task_1))
     queue_id_2 = str(QueueId(task=task_2))
@@ -36,7 +38,9 @@ def test_queue_repository_can_enqueue_multiple_tasks_in_different_order(
     queue_repository: AbstractTasksQueueRepository,
 ) -> None:
     task_1 = Task(id="1", description="Do the laundry", priority=Priority.LOW, status=Status.TODO)
-    task_2 = Task(id="2", description="Get new TV batteries", priority=Priority.MEDIUM, status=Status.TODO)
+    task_2 = Task(
+        id="2", description="Get new TV batteries", priority=Priority.MEDIUM, status=Status.TODO
+    )
     task_3 = Task(id="3", description="Fix curtains", priority=Priority.HIGH, status=Status.TODO)
     queue_id_2 = str(QueueId(task=task_2))
     queue_id_1 = str(QueueId(task=task_1))
@@ -58,7 +62,9 @@ def test_queue_repository_can_dequeue_multiple_tasks(
     queue_repository: AbstractTasksQueueRepository,
 ) -> None:
     task_1 = Task(id="1", description="Do the laundry", priority=Priority.LOW, status=Status.TODO)
-    task_2 = Task(id="2", description="Get new TV batteries", priority=Priority.MEDIUM, status=Status.TODO)
+    task_2 = Task(
+        id="2", description="Get new TV batteries", priority=Priority.MEDIUM, status=Status.TODO
+    )
     task_3 = Task(id="3", description="Fix curtains", priority=Priority.HIGH, status=Status.TODO)
     task_4 = Task(id="4", description="Check mails", priority=Priority.LOW, status=Status.TODO)
     queue_id_1 = str(QueueId(task=task_1))

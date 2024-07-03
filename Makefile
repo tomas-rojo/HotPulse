@@ -40,26 +40,26 @@ alltests:
 format: pyupgrade absolufy isort black
 
 pyupgrade:
-	find src/   -type f -name '*.py' -exec pyupgrade --py311-plus {} +
+	find hotpulse/   -type f -name '*.py' -exec pyupgrade --py311-plus {} +
 	find tests/ -type f -name '*.py' -exec pyupgrade --py311-plus {} +
 
 absolufy:
-	@find src/   -type f -name '*.py' -exec absolufy-imports --application-directories src/ {} +
+	@find hotpulse/   -type f -name '*.py' -exec absolufy-imports --application-directories hotpulse/ {} +
 	@find tests/ -type f -name '*.py' -exec absolufy-imports --application-directories tests/ {} +
 
 isort:
-	@isort --profile black src/ tests/
+	@isort --profile black hotpulse/ tests/
 
 black:
-	@black src/ tests/
+	@black hotpulse/ tests/
 
 checks: flake8 mypy
 
 flake8:
-	flake8 src/ tests/
+	flake8 hotpulse/ tests/
 
 mypy:
-	mypy src/ tests/
+	mypy hotpulse/ tests/
 
 run:
-	@cd src/entrypoints && flask run --debug
+	@cd hotpulse/entrypoints && flask run --debug

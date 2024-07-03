@@ -1,12 +1,12 @@
-from datetime import datetime
 import uuid
+from datetime import datetime
 
 from flask import Blueprint, Response, jsonify, render_template, request
 
 from exceptions.queue_connection_error import QueueConnectionError
 from models.task import Priority, Status, Task
-from services.get_tasks import get_all
 from services.enqueue_task import enqueue_task
+from services.get_tasks import get_all
 
 bp = Blueprint("api", __name__)
 
