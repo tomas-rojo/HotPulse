@@ -11,7 +11,6 @@ from models.task import Priority, Status, Task
 @fixture
 def new_task_1() -> Task:
     return Task(
-        id="task_1",
         description="Task 1",
         status=Status.TODO,
         priority=Priority.LOW,

@@ -1,7 +1,7 @@
-import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
 from enum import Enum
+import uuid
 
 
 class Priority(Enum):
@@ -16,9 +16,13 @@ class Status(Enum):
     DONE = 3
 
 
+def generate_id() -> str:
+    return str(uuid.uuid4())
+
+
 @dataclass(frozen=True, slots=True)
 class Task:
-    id: str
+    id: str = field(default_factory=generate_id, init=False)
     description: str
     priority: Priority
     status: Status = Status.TODO

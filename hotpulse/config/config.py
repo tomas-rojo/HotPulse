@@ -1,5 +1,3 @@
-import os
-
 from adapters.fake_tasks_queue_repository import FakeTaskQueueRepository
 from adapters.rabbitmq_tasks_queue_repository import RabbitMqTaskQueueRepository
 from config.dependency import Dependency

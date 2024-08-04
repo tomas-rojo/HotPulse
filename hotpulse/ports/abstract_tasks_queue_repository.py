@@ -16,5 +16,5 @@ class AbstractTasksQueueRepository(ABC):
         raise NotImplementedError
 
     @abstractmethod
-    def get_all(self) -> OrderedDict[str, Task]:
+    def get_all_hotel_tasks(self) -> OrderedDict[str, Task]:
         raise NotImplementedError

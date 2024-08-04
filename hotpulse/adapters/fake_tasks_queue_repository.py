@@ -1,5 +1,5 @@
 import contextlib
-from collections import OrderedDict
+from collections import OrderedDict, defaultdict
 
 from models.task import Task
 from ports.abstract_tasks_queue_repository import AbstractTasksQueueRepository
@@ -8,15 +8,17 @@ from ports.abstract_tasks_queue_repository import AbstractTasksQueueRepository
 class FakeTaskQueueRepository(AbstractTasksQueueRepository):
 
     def __init__(self) -> None:
-        self._received_traps: OrderedDict[str, Task] = OrderedDict()
-        super().__init__()
+        self._hotel_tasks_queue: dict[str, OrderedDict[str, Task]] = defaultdict(OrderedDict)
 
     def enqueue(self, queue_id: str, task: Task) -> None:
-        self._received_traps[queue_id] = task
+        self._hotel_tasks_queue[queue_id][task.id] = task
 
     def dequeue(self, queue_id: str) -> None:
         with contextlib.suppress(KeyError):
-            del self._received_traps[queue_id]
+            del self._hotel_tasks_queue[queue_id]
 
-    def get_all(self) -> OrderedDict[str, Task]:
-        return self._received_traps.copy()
+    def get_all_hotel_tasks(self) -> OrderedDict[str, Task]:
+        try:
+            return self._hotel_tasks_queue["hotel_tasks"].copy()
+        except KeyError:
+            return OrderedDict()

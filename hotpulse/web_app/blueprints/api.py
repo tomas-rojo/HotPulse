@@ -6,7 +6,7 @@ from flask import Blueprint, Response, jsonify, render_template, request
 from exceptions.queue_connection_error import QueueConnectionError
 from models.task import Priority, Status, Task
 from services.enqueue_task import enqueue_task
-from services.get_tasks import get_all
+from services.get_all_hotel_tasks import get_all
 
 bp = Blueprint("api", __name__)
 
@@ -23,16 +23,11 @@ def get_priority(priority: str) -> Priority:
             raise ValueError("Invalid priority")
 
 
-def generate_id() -> str:
-    return str(uuid.uuid4())
-
-
 @bp.route("/api", methods=["GET", "POST"])
 def api() -> str | tuple[Response, int]:  # noqa
     if request.method == "POST":
         try:
             task = Task(
-                id=generate_id(),
                 description=request.form.get("description", default=""),
                 status=Status.TODO,
                 priority=get_priority(request.form.get("priority", default="")),

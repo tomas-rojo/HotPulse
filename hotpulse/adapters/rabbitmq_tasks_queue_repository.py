@@ -1,3 +1,4 @@
+from collections import OrderedDict
 import pickle
 from typing import Any
 
@@ -45,7 +46,14 @@ class RabbitMqTaskQueueRepository:
     def dequeue(self, queue_id: str) -> Task:
         return None
 
-    def get_all(self) -> int:
+    def get_all(self) -> OrderedDict[str, Task]:
         connection = self._create_connection()
         channel = connection.channel()
-        return channel.get_waiting_message_count(queue="hotel_tasks")
+        messages = {}
+        while True:
+            method_frame, header_frame, body = channel.basic_get(queue="hotel_tasks")
+            if method_frame is None:
+                break
+            task: Task = pickle.loads(body)
+            messages[task.id] = task
+        return messages
